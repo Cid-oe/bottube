@@ -3,13 +3,7 @@ import sqlite3
 import time
 from bottube_server import app, init_db, get_db
 
-@pytest.fixture
-def client():
-    app.config["TESTING"] = True
-    with app.test_client() as c:
-        with app.app_context():
-            init_db()
-        yield c
+
 
 def test_tips_dashboard_renders_cleanly(client):
     """Verify /tips/dashboard responds 200 and renders the dashboard template."""
